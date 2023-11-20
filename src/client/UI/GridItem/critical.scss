@@ -1,0 +1,25 @@
+$behavior-values: ('fixed' '0 1 auto'), ('stretch' '1 1 auto'), ('no-shrink' '1 0 auto');
+$align-values: ('top' 'flex-start') ('middle' 'center') ('bottom' 'flex-end');
+$push-values: 'top', 'right', 'bottom', 'left';
+
+.grid-item {
+  flex: 1 1 0%;
+
+  @each $value in $behavior-values {
+    &--behavior-#{nth($value, 1)} {
+      flex: #{nth($value, 2)};
+    }
+  }
+
+  @each $value in $align-values {
+    &--align-#{nth($value, 1)} {
+      align-self: #{nth($value, 2)};
+    }
+  }
+
+  @each $value in $push-values {
+    &--push-#{$value} {
+      margin-#{$value}: auto;
+    }
+  }
+}

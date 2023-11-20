@@ -1,0 +1,50 @@
+$direction-values: 'row', 'column'; 
+$wrap-values: 'wrap', 'nowrap'; 
+$justify-values: 'flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly';
+$align-values: 'stretch', 'flex-start', 'flex-end', 'center', 'baseline';
+$alignContent-values: 'flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'stretch';
+$gutter-values: ('s' 4) ('m' 12) ('l' 16);
+
+.grid {
+  display: flex;
+
+  @each $value in $direction-values {
+    &--direction-#{$value} {
+      flex-direction: #{$value};
+    }
+  }
+
+  @each $value in $wrap-values {
+    &--wrap-#{$value} {
+      flex-wrap: #{$value};
+    }
+  }
+
+  @each $value in $justify-values {
+    &--justify-#{$value} {
+      justify-content: #{$value};
+    }
+  }
+
+  @each $value in $align-values {
+    &--align-#{$value} {
+      align-items: #{$value};
+    }
+  }
+
+  @each $value in $alignContent-values {
+    &--content-#{$value} {
+      align-content: #{$value};
+    }
+  }
+
+  @each $value in $gutter-values {
+    &--gutters-#{nth($value, 1)} {
+      margin-left: -#{nth($value, 2)};
+      & > .grid-item {
+        padding-left: #{nth($value, 2)};
+      }
+    }
+  }
+}
+
